@@ -2,8 +2,7 @@ import cv2
 import numpy as np
 
 # Open a video file or use a camera (0 for default camera).
-video_capture = cv2.VideoCapture('your_video.mp4')  # Change 'your_video.mp4' to the path of your video file or use 0 for the default camera.
-
+video_capture = cv2.VideoCapture('your_video.mp4')  
 while True:
     # Read a frame from the video.
     ret, frame = video_capture.read()
