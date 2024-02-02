@@ -25,8 +25,8 @@ def main(video_source):
 
 if __name__ == "__main__":
     #Video path bc VSC is picky
-    videoPath = r"C:\Users\Ethan\Desktop\newWork\circleDetection\soda.MOV"
-    videoSource = videoPath #Normally you would just do "soda.MOV" but it woudnt work for me 
+    videoPath = r"C:\Users\Ethan\Desktop\newWork\circleDetection\soda.mov"
+    videoSource = videoPath #Normally you would just do "soda.mov" but it woudnt work for me 
     colorImage = True
 
     main(videoSource)
