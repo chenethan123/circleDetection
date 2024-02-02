@@ -1,7 +1,7 @@
 # main.py
 import cv2 as cv
 #Imports from seperate files
-from video_utils import setup_camera, detect_circles
+from videoFunctions import setup_camera, detect_circles
 
 #Calls the necessary functions
 def main(video_source):
