@@ -24,6 +24,6 @@ def main(video_source):
 if __name__ == "__main__":
     videoPath = r"C:\Users\Ethan\Desktop\newWork\circleDetection\canVideo.mov"
     videoSource = videoPath
-    colorImage = False
+    colorImage = True
 
     main(videoSource)
