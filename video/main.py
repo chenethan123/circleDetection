@@ -1,7 +1,9 @@
 # main.py
 import cv2 as cv
+#Imports from seperate files
 from video_utils import setup_camera, detect_circles
 
+#Calls the necessary functions
 def main(video_source):
     cap = setup_camera(video_source)
     
@@ -22,8 +24,9 @@ def main(video_source):
     cv.destroyAllWindows()
 
 if __name__ == "__main__":
-    videoPath = r"C:\Users\Ethan\Desktop\newWork\circleDetection\canVideo.mov"
-    videoSource = videoPath
+    #Video path bc VSC is picky
+    videoPath = r"C:\Users\Ethan\Desktop\newWork\circleDetection\soda.MOV"
+    videoSource = videoPath #Normally you would just do "soda.MOV" but it woudnt work for me 
     colorImage = True
 
     main(videoSource)
