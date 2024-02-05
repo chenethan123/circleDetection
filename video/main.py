@@ -1,15 +1,35 @@
 # main.py
 import cv2 as cv
-#Imports from seperate files
-from videoFunctions import setup_camera, detect_circles
+from videoFunctions import setup_camera
+import numpy as np
 
-#Calls the necessary functions
+def detect_circles(frame, cap, color_image=False):
+    gframe = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+    
+    circles = cv.HoughCircles(gframe, cv.HOUGH_GRADIENT, 1, int(cap.get(cv.CAP_PROP_FRAME_WIDTH)) * 2, param1=40, param2=40, minRadius=325, maxRadius=400)
+
+    if color_image:
+        displayed_frame = frame
+    else:
+        displayed_frame = gframe
+
+    try:
+        circles = np.uint16(np.around(circles))
+        for i in circles[0, :]:
+            cv.circle(displayed_frame, (i[0], i[1]), i[2], (0, 255, 0), 2)
+            cv.circle(displayed_frame, (i[0], i[1]), 2, (0, 0, 255), 3)
+    except TypeError:
+        pass
+    
+    return displayed_frame
+
 def main(video_source):
     cap = setup_camera(video_source)
     
     if cap is None:
         return
-
+    cv.namedWindow('detected circles', cv.WINDOW_NORMAL)
+    cv.resizeWindow('detected circles', 500, 700)
     while cap.isOpened():
         ret, frame = cap.read()
 
@@ -24,9 +44,8 @@ def main(video_source):
     cv.destroyAllWindows()
 
 if __name__ == "__main__":
-    #Video path bc VSC is picky
-    videoPath = r"C:\Users\Ethan\Desktop\newWork\circleDetection\soda.mov"
-    videoSource = videoPath #Normally you would just do "soda.mov" but it woudnt work for me 
+    videoPath = r"C:\Users\Ethan\Downloads\IMG_0866.MOV"
+    videoSource = videoPath
     colorImage = True
 
     main(videoSource)
